@@ -22,8 +22,15 @@ class List {
     addItem(itemName) {
         this.arrayList.push(itemName);
     }
-    removeLastItem() {
-        this.arrayList.pop();
+    removeItem(itemNumber) {
+        let itemNum = itemNumber;
+        itemNum -= 1;
+        for(let i = 0; i < this.arrayList.length; i++) {
+            if (i === itemNum) {
+                let spliced = this.arrayList.splice(i, 1);
+                console.log(`Removed item: ${spliced}`)
+            }
+        }
     }
     removeSpecificItem(itemName) {
         for(let i = 0; i < this.arrayList.length; i++) {
@@ -38,5 +45,6 @@ class List {
 const newArray = ['Eggs', 'Milk', 'Bananas'];
 const testList = new List(newArray);
 
-testList.removeSpecificItem('Eggs');
+//testList.removeSpecificItem('Eggs');
+testList.removeItem(2.0);
 testList.printList();
