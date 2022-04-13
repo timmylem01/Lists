@@ -4,6 +4,10 @@ class List {
         if(!arguments.length) {
             this.arrayList = [];
         }
+        else if(arguments.length > 1) {
+            this.arrayList = [];
+            console.log('Empty list created. Too many arguments.')
+        }
         else {
             this.arrayList = inputArray;
         }
@@ -18,11 +22,13 @@ class List {
     addItem(itemName) {
         this.arrayList.push(itemName);
     }
-    
+    removeItem() {
+
+    }
 }
 
 const newArray = ['Eggs', 'Milk', 'Bananas'];
 const testList = new List(newArray);
 
-testList.addItem('Cereal');
+//testList.addItem('Cereal');
 testList.printList();
