@@ -23,12 +23,10 @@ class List {
         this.arrayList.push(itemName);
     }
     removeItem(itemNumber) {
-        let itemNum = itemNumber;
-        itemNum -= 1;
+        let itemNum = itemNumber - 1;
         for(let i = 0; i < this.arrayList.length; i++) {
             if (i === itemNum) {
-                let spliced = this.arrayList.splice(i, 1);
-                console.log(`Removed item: ${spliced}`)
+                let spliced = this.arrayList.splice(i, 1); 
             }
         }
     }
@@ -36,9 +34,11 @@ class List {
         for(let i = 0; i < this.arrayList.length; i++) {
             if (this.arrayList[i] === itemName) {
                 let spliced = this.arrayList.splice(i, 1);
-                console.log(`Removed item: ${spliced}`)
             }
         }
+    }
+    getLength() {
+        return this.arrayList.length;
     }
 }
 
@@ -46,5 +46,7 @@ const newArray = ['Eggs', 'Milk', 'Bananas'];
 const testList = new List(newArray);
 
 //testList.removeSpecificItem('Eggs');
-testList.removeItem(2.0);
+//testList.removeItem(2.0);
+testList.addItem('Cookies');
 testList.printList();
+console.log(testList.getLength());
