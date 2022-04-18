@@ -1,6 +1,8 @@
 class List {
     arrayList;
+    counter;
     constructor(inputArray) {
+        this.counter = inputArray.length;
         if(!arguments.length) {
             this.arrayList = [];
         }
@@ -21,6 +23,7 @@ class List {
     }
     addItem(itemName) {
         this.arrayList.push(itemName);
+        this.counter++;
     }
     removeItem(itemNumber) {
         let itemNum = itemNumber - 1;
@@ -29,6 +32,7 @@ class List {
                 let spliced = this.arrayList.splice(i, 1); 
             }
         }
+        this.counter--;
     }
     removeSpecificItem(itemName) {
         for(let i = 0; i < this.arrayList.length; i++) {
@@ -36,17 +40,32 @@ class List {
                 let spliced = this.arrayList.splice(i, 1);
             }
         }
+        this.counter--;
     }
     getLength() {
-        return this.arrayList.length;
+        return this.counter;
+    }
+    combineLists(list2) {
+        // get array from list 2
+        let newArr = list2.arrayList
+        // newArr = merge this.array with list 2 array
+        newArr = [].concat(this.arrayList, list2.arrayList) 
+        // set this.array to newArr
+        this.arrayList = newArr;
+        // return should be combined list
     }
 }
 
 const newArray = ['Eggs', 'Milk', 'Bananas'];
-const testList = new List(newArray);
+const newArray2 = ['Cereal', 'Lemonade', 'Brownies'];
+const list1 = new List(newArray);
+const list2 = new List(newArray2);
 
 //testList.removeSpecificItem('Eggs');
 //testList.removeItem(2.0);
-testList.addItem('Cookies');
-testList.printList();
-console.log(testList.getLength());
+list1.addItem('Cookies');
+
+// console.log(list1.getLength());
+
+list1.combineLists(list2);
+list1.printList();
